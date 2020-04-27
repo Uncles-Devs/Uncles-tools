@@ -377,3 +377,8 @@
 2020-04-27 13:22:15.212  INFO 2862 --- [XNIO-1 I/O-6] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
 2020-04-27 13:22:18.065  INFO 2862 --- [XNIO-1 task-14] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:53523
 2020-04-27 13:22:18.073  INFO 2862 --- [XNIO-1 task-14] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:53523
+2020-04-27 13:34:57.689  INFO 2862 --- [XNIO-1 I/O-7] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:53523 -- CloseStatus[code=1006, reason=]
+2020-04-27 13:34:57.703  INFO 2862 --- [XNIO-1 I/O-7] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-04-27 13:34:57.744  INFO 2862 --- [Thread-1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-27 13:34:57.754  INFO 2862 --- [Thread-1] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring disabled.
+2020-04-27 13:34:57.790  INFO 2862 --- [Thread-1] io.undertow.servlet                      : Destroying Spring FrameworkServlet 'dispatcherServlet'
