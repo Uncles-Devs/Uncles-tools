@@ -1,13 +1,15 @@
-const { prefix, mongoURI } = require("../../botconfig.json");
+const { prefix} = require("../../botconfig.json");
 const { MessageEmbed } = require('discord.js');
 const rateLimitXP = new Set()
+
+const { URI } = require('../../botconfig.json')
 
 module.exports = async (bot, message) => {
 // --------------------------- L E V E L I N G --------------------------- \\
     // Database stuff
     const xpData = require('../../models/xp.js');
     const mongoose = require('mongoose')
-    mongoose.connect(mongoURI, {
+    mongoose.connect(URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
