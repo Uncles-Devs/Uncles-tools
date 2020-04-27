@@ -1,0 +1,22 @@
+{
+  "name": "music",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lavalink": "java -jar Lavalink.jar"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ascii-art": "^2.5.0",
+    "ascii-art-font-updated": "^1.0.0",
+    "ascii-art-table": "^1.0.1",
+    "erela.js": "^1.1.7",
+    "figlet": "^1.3.0",
+    "fonts.js": "^2.1.2",
+    "num-words": "^1.0.1",
+    "save": "^2.4.0"
+  }
+}
