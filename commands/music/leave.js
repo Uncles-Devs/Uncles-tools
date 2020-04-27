@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
     config: {
         name: "leave",
-        aliases: ["stop", "leave"],
+        aliases: ["stop", "leave", "disconnect"],
         usage: "unc leave",
         description: "Leaves the voice channel",
         category:"music",
