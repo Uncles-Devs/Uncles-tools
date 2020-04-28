@@ -39,7 +39,7 @@ module.exports = async (bot, message) => {
         setTimeout(() => {
             rateLimitXP.delete(message.author.id)
         }, 60000)
-    } else if (!message.content.startsWith(prefix) && !message.author.bot && !rateLimitXP.has(message.author.id)){
+    } else if (data && !message.content.startsWith(prefix) && !message.author.bot && !rateLimitXP.has(message.author.id)){
         // If user is in database add the xp
         const curxp = data.xp;
         data.xp = curxp + xpAmount
@@ -51,8 +51,8 @@ module.exports = async (bot, message) => {
         }, 60000)
     }
 
-    if (!message.author.bot) {
-        // If user needs to level up
+    if (!message.author.bot && data) {
+    // If user needs to level up
     const curlvl = data.level
     let nxtLvl = data.level * 65 // how much xp person needs to level up EX. lvl 1 - 250 xp, lvl 2 - 2 times 250xp
     if (nxtLvl <= data.xp) {
