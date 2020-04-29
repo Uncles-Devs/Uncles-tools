@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+let player;
 
 module.exports = {
     config: {
@@ -33,51 +34,57 @@ module.exports = {
             if (!permissions.has('SPEAK'))
                 return message.channel.send(permerr)
         }
+            const paused = bot.music.players.get(message.guild.id);
 
-        const nosong = new MessageEmbed()
+            const nosong = new MessageEmbed()
             .setColor('RED')
             .setTitle('**Something went wrong**')
             .setDescription('There is no music player in this guild.\n`%play (song/url)` to start the party!')
-        if (!args[0])
-            return message.channel.send(nosong)
-
-        else {
-            let player;
-
-            bot.music.search(args.join(' '), message.author).then(async res => {
-
-                switch (res.loadType) {
-                    case "TRACK_LOADED":
-                        player = bot.music.players.spawn({
-                            guild: message.guild,
-                            textChannel: message.channel,
-                            voiceChannel: channel
-                        });
-
-                        player.queue.add(res.tracks[0]);
-                        const added = new MessageEmbed()
-                            .setColor('GREEN')
-                            .setTitle('**Music Queue**')
-                            .setDescription(`Added [${res.tracks[0].title}](${res.tracks[0].uri}) to the queue`)
-                        message.channel.send(added)
-                        if (!player.playing) player.play()
-                        break;
-
-                    case "SEARCH_RESULT":
-                        player = bot.music.players.spawn({
-                            guild: message.guild,
-                            textChannel: message.channel,
-                            voiceChannel: channel
-                        });
-
-                        player.queue.add(res.tracks[0]);
-                        const addedS = new MessageEmbed()
-                            .setColor('GREEN')
-                            .setTitle('**Music Queue**')
-                            .setDescription(`Added [${res.tracks[0].title}](${res.tracks[0].uri}) to the queue`)
-                        message.channel.send(addedS)
-                        if (!player.playing) player.play()
+        if (!args[0]) {
+            if (!paused) {
+                message.channel.send(nosong)
+            } else if (!paused.playing) {
+               paused.pause(false)
+               const up = new MessageEmbed()
+               .setColor('RED')
+               .setDescription('The player has resumed playing')
+               message.channel.send(up)
                 }
+            } else {
+                bot.music.search(args.join(' '), message.author).then(async res => {
+
+                    switch (res.loadType) {
+                        case "TRACK_LOADED":
+                            player = bot.music.players.spawn({
+                                guild: message.guild,
+                                textChannel: message.channel,
+                                voiceChannel: channel
+                            });
+    
+                            player.queue.add(res.tracks[0]);
+                            const added = new MessageEmbed()
+                                .setColor('GREEN')
+                                .setTitle('**Music Queue**')
+                                .setDescription(`Added [${res.tracks[0].title}](${res.tracks[0].uri}) to the queue`)
+                            message.channel.send(added)
+                            if (!player.playing) player.play()
+                            break;
+    
+                        case "SEARCH_RESULT":
+                            player = bot.music.players.spawn({
+                                guild: message.guild,
+                                textChannel: message.channel,
+                                voiceChannel: channel
+                            });
+    
+                            player.queue.add(res.tracks[0]);
+                            const addedS = new MessageEmbed()
+                                .setColor('GREEN')
+                                .setTitle('**Music Queue**')
+                                .setDescription(`Added [${res.tracks[0].title}](${res.tracks[0].uri}) to the queue`)
+                            message.channel.send(addedS)
+                            if (!player.playing) player.play()
+                 }
             }).catch(err => console.log(err))
         }
     }

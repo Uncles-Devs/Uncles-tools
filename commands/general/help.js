@@ -27,7 +27,7 @@ module.exports = {
                 const dir = bot.commands.filter(c => c.config.category === category)
                 const capitalise = category.slice(0, 1).toUpperCase() + category.slice(1)
                 try {
-                    hEmbed.addField(`${capitalise} - ${dir.size}`, dir.map(c => `\`${c.config.name}\``).join(", "))
+                    hEmbed.addField(`${capitalise}`, dir.map(c => `\`${c.config.name}\``).join(" "))
                 } catch(e) {
                     console.log('h')
                 }
@@ -43,7 +43,7 @@ module.exports = {
                 const category = new MessageEmbed()
                 .setColor('GREEN')
                 .setTitle(`**${args[0].slice(0, 1).toUpperCase() + args[0].slice(1)} Commands**`)
-                .setDescription(categorySearch.map(c => `\`${c.config.name}\``).join(', '))
+                .setDescription(categorySearch.map(c => `\`${c.config.name}\``).join(' '))
                 message.channel.send(category)
                 }
     

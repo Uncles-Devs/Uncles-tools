@@ -10,5 +10,5 @@ const load = dirs => {
         bot.on(eName, evt.bind(null, bot));
         };
     };
-    ["client", "guild"].forEach(x => load(x));
+    ["client", "discord"].forEach(x => load(x));
 };

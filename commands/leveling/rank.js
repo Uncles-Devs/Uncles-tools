@@ -8,10 +8,10 @@ Canvas.registerFont(resolve(join(__dirname, '..', '..', 'font.ttf')), 'Discord')
 module.exports = {
     config: {
         name: "rank",
-        aliases: ["level", "xp", "rank"],
+        aliases: ["rank", "xp", "level"],
         usage: "unc rank",
         description: "",
-        category: "levels",
+        category: "leveling",
         noalias: "",
         accessibility: ""
     },
