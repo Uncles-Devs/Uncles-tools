@@ -15,7 +15,7 @@ module.exports = async (bot, message) => {
     })
 
     // Random xp to add
-    let xpAmount = Math.floor(Math.random() * 1) + 7;
+    let xpAmount = Math.floor(Math.random() * 7) + 1;
 
     // Find user in database
     let data = await xpData.findOne({
