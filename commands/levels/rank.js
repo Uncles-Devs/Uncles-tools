@@ -30,17 +30,16 @@ module.exports = {
                     message.channel.send('You are not ranked yet. Start chatting to earn xp')
                 } else {
                      // Find users rank
-                    let rank;
+                    const map = new Map()
+                    let rank = 0
                     await xp.find({
                         serverId: message.guild.id
                     }).sort([
                         ['xp', 'descending']
                     ]).then(res => {
-                            for (i = 0; i < res.length; i++) {
-                                if(res[i].userId === message.author.id) {
-                                    rank = i + 1
-                                }
-                            }
+                        res.forEach((user) => {
+                            map.set(++rank, user)
+                        })
                     }).catch(err => console.log(err))
 
                 const curxp = data.xp // Users current xp
@@ -123,17 +122,16 @@ module.exports = {
                 if (!data2) {
                     message.channel.send('That user is not ranked yet. Tell them to chat to earn xp')
                 } else {
-                    let rank2;
+                    const map2 = new Map()
+                    let rank2 = 0
                     await xp.find({
                         serverId: message.guild.id
                     }).sort([
                         ['xp', 'descending']
                     ]).then(res => {
-                            for (i = 0; i < res.length; i++) {
-                                if(res[i].userId === member.user.id) {
-                                    rank2 = i + 1
-                                }
-                            }
+                        res.forEach((user) => {
+                            map2.set(++rank2, user)
+                        })
                     }).catch(err => console.log(err))
 
                     const curxp2 = data2.xp // Users current xp
