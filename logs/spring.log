@@ -103,3 +103,36 @@
 2020-04-29 11:27:52.672  INFO 1110 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
 2020-04-29 11:27:54.942  INFO 1110 --- [XNIO-1 task-18] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:62891
 2020-04-29 11:27:54.953  INFO 1110 --- [XNIO-1 task-18] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:62891
+2020-04-29 11:36:56.213  INFO 1110 --- [XNIO-1 task-19] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:63513
+2020-04-29 11:36:56.225  INFO 1110 --- [XNIO-1 task-19] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:63513
+2020-04-29 11:37:46.430  INFO 1110 --- [XNIO-1 I/O-5] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:63513 -- CloseStatus[code=1006, reason=]
+2020-04-29 11:37:46.431  INFO 1110 --- [XNIO-1 I/O-5] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-04-29 11:37:48.045  INFO 1110 --- [XNIO-1 I/O-7] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:62891 -- CloseStatus[code=1006, reason=]
+2020-04-29 11:37:48.046  INFO 1110 --- [XNIO-1 I/O-7] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-04-29 11:37:50.448  INFO 1110 --- [XNIO-1 task-20] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:63583
+2020-04-29 11:37:50.460  INFO 1110 --- [XNIO-1 task-20] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:63583
+2020-04-29 11:38:15.153  INFO 1110 --- [XNIO-1 I/O-3] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:63583 -- CloseStatus[code=1006, reason=]
+2020-04-29 11:38:15.154  INFO 1110 --- [XNIO-1 I/O-3] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-04-29 11:38:17.342  INFO 1110 --- [XNIO-1 task-21] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:63619
+2020-04-29 11:38:17.348  INFO 1110 --- [XNIO-1 task-21] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:63619
+2020-04-29 11:38:27.126  INFO 1110 --- [XNIO-1 task-22] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-04-29 11:38:28.787  INFO 1110 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: hello
+2020-04-29 11:38:51.909  INFO 1110 --- [XNIO-1 I/O-7] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:63619 -- CloseStatus[code=1006, reason=]
+2020-04-29 11:38:51.909  INFO 1110 --- [XNIO-1 I/O-7] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-04-29 11:38:54.548  INFO 1110 --- [XNIO-1 task-24] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:63678
+2020-04-29 11:38:54.559  INFO 1110 --- [XNIO-1 task-24] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:63678
+2020-04-29 11:38:58.925  INFO 1110 --- [XNIO-1 task-25] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-04-29 11:38:59.540  INFO 1110 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: hello
+2020-04-29 11:39:03.645  INFO 1110 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","guildId":"644304521425846312","track":"QAAAbAIADUFkZWxlIC0gSGVsbG8ABUFkZWxlAAAAAAAFmZgAC1lRSHNYTWdsQzlBAAEAK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9WVFIc1hNZ2xDOUEAB3lvdXR1YmUAAAAAAAAAAA==","volume":100}
+2020-04-29 11:39:03.686  INFO 1110 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"sessionId":"64818d8baf6e489648bbf6814b9e96be","op":"voiceUpdate","guildId":"644304521425846312","event":{"token":"fb585ee94af3b0de","guild_id":"644304521425846312","endpoint":"us-east303.discord.media:80"}}
+2020-04-29 11:39:03.874  INFO 1110 --- [parallel-7] com.jcabi.manifests.Manifests            : 65 attributes loaded from 81 stream(s) in 129ms, 65 saved, 1177 ignored: ["Archiver-Version", "Automatic-Module-Name", "Bnd-LastModified", "Build-Jdk", "Build-Jdk-Spec", "Built-By", "Bundle-Activator", "Bundle-Description", "Bundle-DocURL", "Bundle-License", "Bundle-ManifestVersion", "Bundle-Name", "Bundle-RequiredExecutionEnvironment", "Bundle-SymbolicName", "Bundle-Vendor", "Bundle-Version", "Created-By", "Export-Package", "Extension-Name", "Implementation-Build", "Implementation-Build-Date", "Implementation-Title", "Implementation-URL", "Implementation-Vendor", "Implementation-Vendor-Id", "Implementation-Version", "Import-Package", "Include-Resource", "JCabi-Build", "JCabi-Date", "JCabi-Version", "Jar-Name", "Jar-Version", "Java-Vendor", "Java-Version", "Kotlin-Runtime-Component", "Kotlin-Version", "Log4jReleaseKey", "Log4jReleaseManager", "Log4jReleaseVersion", "Magma-Version", "Main-Class", "Manifest-Version", "Multi-Release", "Originally-Created-By", "Os-Arch", "Os-Name", "Os-Version", "Private-Package", "Provide-Capability", "Require-Capability", "Scm-Connection", "Scm-Revision", "Scm-Url", "Specification-Title", "Specification-Vendor", "Specification-Version", "Spring-Boot-Classes", "Spring-Boot-Lib", "Spring-Boot-Version", "Start-Class", "Tool", "X-Compile-Source-JDK", "X-Compile-Target-JDK", "url"]
+2020-04-29 11:39:10.691  INFO 1110 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"644304521425846312"}
+2020-04-29 11:41:40.841  INFO 1110 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:63678 -- CloseStatus[code=1006, reason=]
+2020-04-29 11:41:40.842  INFO 1110 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-04-29 11:41:43.268  INFO 1110 --- [XNIO-1 task-27] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:63926
+2020-04-29 11:41:43.278  INFO 1110 --- [XNIO-1 task-27] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:63926
+2020-04-29 11:41:53.009  INFO 1110 --- [XNIO-1 task-28] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-04-29 11:41:53.724  INFO 1110 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: hello
+2020-04-29 11:41:53.735  INFO 1110 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","guildId":"644304521425846312","track":"QAAAbAIADUFkZWxlIC0gSGVsbG8ABUFkZWxlAAAAAAAFmZgAC1lRSHNYTWdsQzlBAAEAK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9WVFIc1hNZ2xDOUEAB3lvdXR1YmUAAAAAAAAAAA==","volume":100}
+2020-04-29 11:41:53.808  INFO 1110 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"sessionId":"085f78d539140c2505d1aa3e5a25c7b6","op":"voiceUpdate","guildId":"644304521425846312","event":{"token":"3ec694fed049da47","guild_id":"644304521425846312","endpoint":"us-east755.discord.media:80"}}
+2020-04-29 11:42:01.554  INFO 1110 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"644304521425846312"}

@@ -28,15 +28,8 @@ const load = dirs => {
         accessibility: ""
     },
     run: async (bot, message, args) => {
-        try {
 
         // some code here
-        
-        }
-        catch(err) {
-            const owner = await bot.fetchApplication().then(async application => `${application.owner.tag}`)
-            message.channel.send(`**whoopsie doopsie**\nThere seems to be a problem with the \`sevrerinfo\` command, if this error occurs again message my creator for support (${owner})`)
-        }
     }
 }
  */
