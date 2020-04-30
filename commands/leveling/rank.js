@@ -212,30 +212,9 @@ module.exports = {
 
                     }
                 }
-                //else {
-                // If a user is mentioned
-                //let data2 = await xp.findOne({
-                //username: member.user.username
-                //})
-
-                //if (!data2) {
-                //message.channel.send('That user is not ranked yet. Tell them to chat to earn xp')
-                //} else {
-                //const curxp2 = data2.xp
-                //const curlvl2 = data2.level
-                //const nxtlvlXP2 = curlvl2 * 350
-
-                //const lvlEmbed2 = new MessageEmbed()
-                //.setTitle(message.author.username)
-                //.setDescription(`**Level :** ${curlvl2} \n**Exp :** ${curxp2} / ${nxtlvlXP2}`)
-
-                //message.channel.send(lvlEmbed2)
-                //}
             }
         } catch (err) {
             console.log(err)
         }
     }
 }
-
-//150, 10, 10, 0, 2 * Math.PI
