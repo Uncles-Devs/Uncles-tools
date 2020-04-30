@@ -5,6 +5,7 @@ const cpSchema = mongoose.Schema({
     userId: String,
     serverId: String,
     xp: Number,
+    totalXp: Number,
     level: Number
 });
 

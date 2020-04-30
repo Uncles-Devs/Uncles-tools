@@ -30,6 +30,7 @@ module.exports = async (bot, message) => {
             userId: message.author.id,
             serverId: message.guild.id,
             xp: xpAmount,
+            totalXp: xpAmount,
             level: 1
 
         })
@@ -43,6 +44,7 @@ module.exports = async (bot, message) => {
         // If user is in database add the xp
         const curxp = data.xp;
         data.xp = curxp + xpAmount
+        data.totalXp = data.totalXp + xpAmount
         await data.save().catch(err => console.log(err))
 
         rateLimitXP.add(message.author.id);

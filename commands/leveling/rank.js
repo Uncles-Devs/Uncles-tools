@@ -34,7 +34,7 @@ module.exports = {
                     await xp.find({
                         serverId: message.guild.id
                     }).sort([
-                        ['xp', 'descending']
+                        ['totalXp', 'descending']
                     ]).then(async res => {
                         for (i = 0; i < res.length; i++) {
                             if(res[i].userId === message.author.id) {
@@ -97,7 +97,7 @@ module.exports = {
                     canvas.save()
                     // Add the moving status bar
                     if (curxp < 1) {
-                        canvas.setColor('#ffffff')
+                        return;
                     } else if (curxp > 1) {
                         canvas.setColor('#2da14e')
                     }
@@ -193,7 +193,7 @@ module.exports = {
                     canvas.save()
                     // Add the moving status bar
                     if (curxp2 < 1) {
-                        canvas.setColor('#ffffff')
+                        return
                     } else if (curxp2 > 1) {
                         canvas.setColor('#2da14e')
                     }
