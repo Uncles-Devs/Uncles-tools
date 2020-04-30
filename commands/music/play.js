@@ -84,6 +84,25 @@ module.exports = {
                                 .setDescription(`Added [${res.tracks[0].title}](${res.tracks[0].uri}) to the queue`)
                             message.channel.send(addedS)
                             if (!player.playing) player.play()
+                            break;
+
+                        case "NO_MATCHES":
+                            const nosres = new MessageEmbed()
+                                .setColor('RED')
+                                .setTitle('**No Results**')
+                                .setDescription(`There were no results for what you searched`)
+
+                            message.channel.send(nosres)
+                            break;
+
+                        case "LOAD_FAILED":
+                            const nores = new MessageEmbed()
+                                .setColor('RED')
+                                .setTitle('**No Results**')
+                                .setDescription(`There were no results for what you searched`)
+
+                            message.channel.send(nores)
+                            break;
                  }
             }).catch(err => console.log(err))
         }
