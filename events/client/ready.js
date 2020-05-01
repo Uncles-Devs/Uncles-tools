@@ -1,5 +1,12 @@
 const figlet = require('figlet');
 
+const { URI } = require('../../botconfig.json')
+const mongoose = require('mongoose')
+    mongoose.connect(URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+
 module.exports = async (bot) => {
     figlet('     Uncles Tools >>>', function(err, data) {
         if (err) {
