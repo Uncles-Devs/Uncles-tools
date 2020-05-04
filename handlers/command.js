@@ -13,7 +13,7 @@ const load = dirs => {
         if(pull.config.aliases) pull.config.aliases.forEach(a => bot.aliases.set(a, pull.config.name));
         };
     };
-    ["leveling", "music", "general"].forEach(x => load(x));
+    ["leveling", "general"].forEach(x => load(x));
 };
 
 /**

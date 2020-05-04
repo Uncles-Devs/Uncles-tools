@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-const lRSchema = mongoose.Schema({
+const cpSchema = mongoose.Schema({
     serverId: String,
     level: Number,
-    roleId: String
+    roles: Array
 });
 
-module.exports = mongoose.model('levelRoles', lRSchema)
+module.exports = mongoose.model('lr', cpSchema)

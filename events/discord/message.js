@@ -10,7 +10,7 @@ module.exports = async (bot, message) => {
     const xpData = require('../../models/xp.js');
 
     // Random xp to add
-    let xpAmount = Math.floor(Math.random() * 7) + 1;
+    let xpAmount = Math.floor(Math.random() * 30) + 25;
 
     // Find user in database
     let data = await xpData.findOne({
@@ -56,7 +56,21 @@ module.exports = async (bot, message) => {
         data.level = curlvl + 1
         data.xp = 0
         await data.save().catch(err => console.log(err))
+        const lr = require('../../models/levelRoles.js')
+        let roleFinder = await lr.find({
+            serverId: message.guild.id,
+            level: data.level
+        })
 
+        if (roleFinder.length > 0) {
+            roleFinder.forEach(object => {
+                console.log(object)
+                const levelRole = object.roles
+                levelRole.forEach(role=> {
+                    message.member.roles.add(role).catch(err => console.log(err))
+                })
+            })
+        } 
         const lvlupEmbed = new MessageEmbed()
             .setTitle(message.author.username)
             .setDescription(`**CONGRATS**\nYou are now level ${curlvl + 1}`)
