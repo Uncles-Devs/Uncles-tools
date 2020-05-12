@@ -1,17 +1,17 @@
-const xp = require('../../models/xp.js');
+const xp = require('../../database/models/xp.js');
 const { MessageAttachment } = require('discord.js');
 const { Canvas } = require("canvas-constructor");
 const { join, resolve } = require('path');
 const fetch = require("node-fetch");
-Canvas.registerFont(resolve(join(__dirname, '..', '..', 'font.ttf')), 'Discord');
+Canvas.registerFont(resolve(join(__dirname, '..', '..', 'assets', 'font.ttf')), 'Discord');
 
 module.exports = {
     config: {
         name: "rank",
         aliases: ["rank", "xp", "level"],
-        usage: "unc rank",
-        description: "",
-        category: "leveling",
+        usage: "duc rank\nduc rank [member]",
+        description: "Check your level on any server",
+        category: "levels",
         noalias: "",
         accessibility: ""
     },
@@ -59,7 +59,7 @@ module.exports = {
                     }
 
                     // Start of the canvas
-                    const background = (join(__dirname, "..", "..", "img", "rank_card.png")); // Load in the background
+                    const background = (join(__dirname, "..", "..", "assets", "rank_card.png")); // Load in the background
                     const name = message.author.tag.length > 20 ? message.member.displayName : message.author.tag; // Check if the usersname will fit
                     const canvas = new Canvas(800, 200); // create the canvas
                     canvas.addImage(background, 0, 0, 800, 200) // Add the background to canvas
@@ -100,8 +100,8 @@ module.exports = {
                         return;
                     } else if (curxp > 1) {
                         canvas.setColor('#2da14e')
+                        canvas.addBeveledRect(20, 150, ((65/ (nxtlvlXP)) * curxp) * 6.46, 37, 17).fill()
                     }
-                    canvas.addBeveledRect(20, 150, ((65/ (nxtlvlXP)) * curxp) * 6.46, 37, 17).fill()
                     // Add the users profile picture and presence
                     canvas.addCircularImage(avatar, 75, 75, 62)
                     canvas.setColor('#23272a')
@@ -155,7 +155,7 @@ module.exports = {
                     }
 
                     // Start of the canvas
-                    const background = (join(__dirname, "..", "..", "img", "rank_card.png")); // Load in the background
+                    const background = (join(__dirname, "..", "..", "assets", "rank_card.png")); // Load in the background
                     const name = member.user.tag.length > 20 ?member.displayName : member.user.tag; // Check if the usersname will fit
                     const canvas = new Canvas(800, 200); // create the canvas
                     canvas.addImage(background, 0, 0, 800, 200) // Add the background to canvas
@@ -196,8 +196,8 @@ module.exports = {
                         return
                     } else if (curxp2 > 1) {
                         canvas.setColor('#2da14e')
+                        canvas.addBeveledRect(20, 150, ((65/ (nxtlvlXP2)) * curxp2) * 6.46, 37, 17).fill()
                     }
-                    canvas.addBeveledRect(20, 150, ((65/ (nxtlvlXP2)) * curxp2) * 6.46, 37, 17).fill()
                     // Add the users profile picture and presence
                     canvas.addCircularImage(avatar, 75, 75, 62)
                     canvas.setColor('#23272a')

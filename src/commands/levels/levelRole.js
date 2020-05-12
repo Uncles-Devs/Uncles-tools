@@ -1,4 +1,4 @@
-const levelRole = require('../../models/levelRoles.js')
+const levelRole = require('../../database/models/levelRoles.js')
     
 
 module.exports = {
@@ -7,7 +7,7 @@ module.exports = {
         aliases: ["rlevel", "rl"],
         usage: "unc levelRole set 1 @test\nunc levelRole remove @test",
         description: "add in role rewards for leveling",
-        category:"leveling",
+        category:"levels",
         noalias: "",
         accessibility: ""
     },
@@ -74,17 +74,11 @@ module.exports = {
                                     return;
                                 }
                                         
-                                levelRole.findOneAndDelete({
+                                levelRole.findOne({
                                     serverId: message.guild.id,
                                     roles: rRole.id
-                                }).then(async rem => {
-                                    await rem.save().catch(err => {
-                                        if (err) {
-                                            console.log('h')
-                                        }
-                                    })
-                                })
-                                message.channel.send(`${rRole} has been removed from the system. Users will no longer recieve this role`)
+                                }).deleteOne().save().catch(err => console.log(err))
+                                message.channel.send(`${rRole} has been removed from the system. Users will no longer recieve this role.`)
                     }
                 }
             }

@@ -1,13 +1,7 @@
 const figlet = require('figlet');
 
-const { URI } = require('../../botconfig.json')
-const mongoose = require('mongoose')
-    mongoose.connect(URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    })
-
 module.exports = async (bot) => {
+    const url = await bot.generateInvite("ADMINISTRATOR");
     figlet('     Uncles Tools >>>', function(err, data) {
         if (err) {
             console.log('An error occured');
@@ -16,11 +10,11 @@ module.exports = async (bot) => {
         console.log(data)
         console.log('     ==================================================================')
         console.log(' ')
-        console.log('             Version: 1.0.0')
         console.log(`             Commads: ${bot.commands.size}`)
         console.log(`             Guilds:  ${bot.guilds.cache.size}`)
         console.log(`             Users:   ${bot.users.cache.size}`)
         console.log(`             Date:    ${new Date().toLocaleDateString()}   `)
+        console.log(`             Invite: ${url}`)
     })
     
     
@@ -29,13 +23,12 @@ module.exports = async (bot) => {
     const { prefix } = require("../../botconfig.json")
 
    let statuses = [
-       `${prefix} help`,
-       `Test`
+       `${prefix}help`,
    ]
 
    setInterval(function() {
        let status = statuses[Math.floor(Math.random() * statuses.length)];
-       bot.user.setActivity(status, {type: "WATCHING"});
+       bot.user.setActivity(status, {type: "STREAMING", url: 'https://www.twitch.tv/duckydevs'});
 
    }, 5000);
 

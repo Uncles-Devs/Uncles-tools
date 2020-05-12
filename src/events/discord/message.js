@@ -7,10 +7,10 @@ const rateLimitXP = new Set()
 module.exports = async (bot, message) => {
 // --------------------------- L E V E L I N G --------------------------- \\
     // Database stuff
-    const xpData = require('../../models/xp.js');
+    const xpData = require('../../database/models/xp.js');
 
     // Random xp to add
-    let xpAmount = Math.floor(Math.random() * 30) + 25;
+    let xpAmount = Math.floor(Math.random() * 7) + 1;
 
     // Find user in database
     let data = await xpData.findOne({
@@ -19,7 +19,7 @@ module.exports = async (bot, message) => {
     })
 
     // If user not in database add them
-    if (!data && !message.content.startsWith(prefix) && !message.author.bot && !rateLimitXP.has(message.author.id)) {
+    if (!data && !message.content.toLowerCase().startsWith(prefix) && !message.author.bot && !rateLimitXP.has(message.author.id)) {
         data = new xpData({
             username: message.author.username,
             userId: message.author.id,
@@ -35,7 +35,7 @@ module.exports = async (bot, message) => {
         setTimeout(() => {
             rateLimitXP.delete(message.author.id)
         }, 60000)
-    } else if (data && !message.content.startsWith(prefix) && !message.author.bot && !rateLimitXP.has(message.author.id)){
+    } else if (data && !message.content.toLowerCase().startsWith(prefix) && !message.author.bot && !rateLimitXP.has(message.author.id)){
         // If user is in database add the xp
         const curxp = data.xp;
         data.xp = curxp + xpAmount
@@ -72,6 +72,7 @@ module.exports = async (bot, message) => {
             })
         } 
         const lvlupEmbed = new MessageEmbed()
+            .setColor('#f7df63')
             .setTitle(message.author.username)
             .setDescription(`**CONGRATS**\nYou are now level ${curlvl + 1}`)
             .setThumbnail(message.author.displayAvatarURL())
@@ -80,7 +81,9 @@ module.exports = async (bot, message) => {
         }  
     }
     // Message handaling
-    if (message.content.startsWith(prefix)) {
+    if (message.author.bot) return;
+
+    if (message.content.toLowerCase().startsWith(prefix)) {
         const args = message.content
             .slice(prefix.length)
             .trim()
@@ -90,9 +93,13 @@ module.exports = async (bot, message) => {
         if (command) return command.run(bot, message, args).catch(err => console.log(err)) // Return if there is a command
     }
 
-    if (
-        message.author.bot || // Return if author is a bot 
-        message.content.startsWith(prefix) // Return if the message starts with the prefix
-    )
-        return;
+    if (message.mentions.members.get('693085746034245724')) {
+        const vv = new MessageEmbed()
+        .setColor('#f7df63')
+        .setAuthor('Ducky', bot.user.displayAvatarURL())
+        .addField('Prefix', `The currect prefix of __**${message.guild.name}**__ is \`${prefix}\`.\nTo execute commands, first write the prefix then the command, example:\n\`${prefix}rank\``)
+        .addField('Commands', `You can find the list of all commands by using \`${prefix}help\``)
+        .addField('Deatils of a command', `Use \`${prefix}help <command>\`  or \`${prefix}help <category>\` for more information .\n**Example:** \`${prefix}help kick\`, \`${prefix}help levels\``)
+        message.channel.send(vv)
+    }
 }

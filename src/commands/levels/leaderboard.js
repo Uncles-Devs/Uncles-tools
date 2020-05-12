@@ -6,12 +6,12 @@ module.exports = {
         aliases: ["leaderboard", "lb", "top"],
         usage: "unc leaderboard",
         description: "Check the server leaderboard",
-        category:"leveling",
+        category:"levels",
         noalias: "",
         accessibility: ""
     },
     run: async (bot, message, args) => {
-        const data = require('../../models/xp.js');
+        const data = require('../../database/models/xp.js');
 
         await data.find({
             serverId: message.guild.id

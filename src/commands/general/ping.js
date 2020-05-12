@@ -2,8 +2,8 @@ module.exports = {
     config: {
         name: "ping",
         aliases: ["ping"],
-        usage: "unc ping",
-        description: "Test the bots latnecy",
+        usage: "duc ping",
+        description: "Check the ping of Ducky",
         category:"general",
         noalias: "",
         accessibility: ""
@@ -11,6 +11,6 @@ module.exports = {
     run: async (bot, message, args) => {
         const send = await message.channel.send('Ping!')
 
-        send.edit(`:ping_pong: | Pong! Time taken - **${send.createdTimestamp - message.createdTimestamp}ms**`)
+        send.edit(`Pong! Time taken - **${send.createdTimestamp - message.createdTimestamp}ms**`)
     }
 }

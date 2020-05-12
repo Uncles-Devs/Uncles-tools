@@ -2,7 +2,7 @@ const { readdirSync } = require("fs")
 
 module.exports = (bot) => {
 const load = dirs => {
-    const commands = readdirSync(`./commands/${dirs}`).filter(d => d.endsWith('.js'));
+    const commands = readdirSync(`./src/commands/${dirs}`).filter(d => d.endsWith('.js'));
     for (let file of commands) {
         const pull = require(`../commands/${dirs}/${file}`);
 
@@ -13,7 +13,7 @@ const load = dirs => {
         if(pull.config.aliases) pull.config.aliases.forEach(a => bot.aliases.set(a, pull.config.name));
         };
     };
-    ["leveling", "general"].forEach(x => load(x));
+    ["levels", "general"].forEach(x => load(x));
 };
 
 /**
