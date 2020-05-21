@@ -9,4 +9,4 @@ const cpSchema = mongoose.Schema({
     level: Number
 });
 
-module.exports = mongoose.model('Levels', cpSchema)
+module.exports = mongoose.model('leveling', cpSchema)

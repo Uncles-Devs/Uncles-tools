@@ -5,12 +5,13 @@ const rateLimitXP = new Set()
 
 
 module.exports = async (bot, message) => {
+    console.log('testing')
 // --------------------------- L E V E L I N G --------------------------- \\
     // Database stuff
     const xpData = require('../../database/models/xp.js');
 
     // Random xp to add
-    let xpAmount = Math.floor(Math.random() * 7) + 1;
+    let xpAmount = Math.floor(Math.random() * 55) + 10;
 
     // Find user in database
     let data = await xpData.findOne({
@@ -56,7 +57,7 @@ module.exports = async (bot, message) => {
         data.level = curlvl + 1
         data.xp = 0
         await data.save().catch(err => console.log(err))
-        const lr = require('../../models/levelRoles.js')
+        const lr = require('../../database/models/levelRoles.js')
         let roleFinder = await lr.find({
             serverId: message.guild.id,
             level: data.level
@@ -64,7 +65,6 @@ module.exports = async (bot, message) => {
 
         if (roleFinder.length > 0) {
             roleFinder.forEach(object => {
-                console.log(object)
                 const levelRole = object.roles
                 levelRole.forEach(role=> {
                     message.member.roles.add(role).catch(err => console.log(err))

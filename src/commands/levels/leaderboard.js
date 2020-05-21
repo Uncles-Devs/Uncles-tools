@@ -11,7 +11,7 @@ module.exports = {
         accessibility: ""
     },
     run: async (bot, message, args) => {
-        const data = require('../../database/models/xp.js');
+        const data = require('../../database/models/leveling.js');
 
         await data.find({
             serverId: message.guild.id
@@ -19,9 +19,10 @@ module.exports = {
             ['totalXp', 'descending']
         ]).then(res => {
             if (res.length === 0) {
+            const empty = bot.emojis.cache.find(x => x.id === '712714749867196599')
             const err = new MessageEmbed()
             .setColor('RED')
-            .setDescription('It seems like no data was found for this guild. Have members start chatting so everyone earns xp')
+            .setDescription(`${empty} its kind of quite here. Start chattng to see whos the most active!`)
 
             message.channel.send(err)
             } else {

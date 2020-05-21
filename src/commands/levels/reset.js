@@ -1,4 +1,5 @@
 const levels = require('../../database/models/xp.js');
+const levelRoles = require('../../database/models/levelRoles.js');
 
 module.exports = {
     config: {
@@ -11,8 +12,7 @@ module.exports = {
         accessibility: ""
     },
     run: async (bot, message, args) => {
-        if (message.author.hasPermission('ADMINISTRATOR')) {
-            const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(x => x.user.username === args.slice(0).join(" ") || x.user.username === args[0])
+        const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(x => x.user.username === args.slice(0).join(" ") || x.user.username === args[0])
 
         if (!member) {
             await message.channel.send(`Are you sure you want to rest everyone's level in ${message.guild.name}? **This action can not be undone.** `).then(async msg => {
@@ -75,11 +75,27 @@ module.exports = {
                     serverId: message.guild.id,
                     userId: member.user.id
                 }).deleteOne().catch(err => console.log(err))
-                message.chanel.send('Thats user\'s data has succesfully been reset')
+                
+                const lr = await levelRoles.find({
+                    serverId: message.guild.id
+                })
+
+                lr.forEach(object => {
+                    member.roles.cache.filter(r => r.id !== message.guild.id).forEach(role => {
+                        console.log(role.name)
+                        if (object.roles == role.id) {
+                                member.roles.cache.filter(r => r.id !== message.guild.id).forEach(roll => {
+                                    // console.log(roll.name)
+                                    member.roles.remove(roll.id)
+                                })
+                            }
+                        }) 
+                    })
                 }
-            }
-        } else {
-            message.channel.send('You do not have access to erase this guilds data')
-        }
+                message.channel.send('Thats user\'s data has succesfully been reset')
+                }
+        } 
     }
-}
+
+
+    
