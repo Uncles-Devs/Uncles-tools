@@ -1,10 +1,10 @@
-const levelRole = require('../../database/models/levelRoles.js');
+const levelRole = require('../../database/models/rewards.js');
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     config: {
         name: "rewards",
-        aliases: ["rewards", "r"],
+        aliases: ["rewards", "rl"],
         usage: "unc levelRole set 1 @test\nunc levelRole remove @test",
         description: "add in role rewards for leveling",
         category:"levels",
@@ -43,14 +43,14 @@ module.exports = {
                                         serverId: message.guild.id,
                                         level: alvl,
                                         roles: nRole.id,
-                                        roleName: nRole.name
+                                        roleName: pRole
                                     })
                                     await lr.save().catch(err => console.log(err))
                                 message.channel.send(`${pRole} has been set for level ${alvl}`)
                         } else {
                             lr.level = alvl
                             roles = nRole.id
-                            roleName = nRole.name
+                            roleName = pRole
                             await lr.save().catch(err => console.log(err))
                             message.channel.send(`${pRole} has been updated for level ${alvl}`)
                         }
@@ -84,23 +84,28 @@ module.exports = {
                     }
                 } else {
                     if (condition === 'view') {
+                        let rlOut;
                        levelRole.find({
                            serverId: message.guild.id
                        }).sort([
                            ['level', 'ascending']
                         ]).then(res => {
                            if(res.length === 0) {
-                               let rlOut = 'None';
+                               rlOut = 'None';
                            } else {
-                               const rlName = res.map(z => z.roleName);
+                               const rlName = res.map(z => z.roles);
                                const rlLevel = res.map(x => x.level)
                                const rlOutp = rlLevel.map(function(a, b) {
-                                   return['Level:' + `**${a}**` + '\n' + 'Role:' + `**${rlName[b]}**`];
+                                   return['Level: ' + `**${a}** ` + 'Role: ' + `<@&${rlName[b]}>`];
                                })
                                rlOut = rlOutp.join('\n')
                            }
                            const embed = new MessageEmbed()
-                           .setTitle(`Level rewards for `)
+                           .setColor('#f7df63')
+                           .setTitle(`Level rewards`)
+                           .setDescription(rlOut)
+
+                           message.channel.send(embed)
                        })
                     } 
                 }

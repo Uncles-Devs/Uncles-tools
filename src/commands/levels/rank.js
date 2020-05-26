@@ -1,15 +1,16 @@
-const xp = require('../../database/models/xp.js');
+const xp = require('../../database/models/leveling.js');
 const { MessageAttachment } = require('discord.js');
 const { Canvas } = require("canvas-constructor");
 const { join, resolve } = require('path');
 const fetch = require("node-fetch");
 Canvas.registerFont(resolve(join(__dirname, '..', '..', 'assets', 'font.ttf')), 'Discord');
+const correctXp = require('../../lib/functions/correctXp.js');
 
 module.exports = {
     config: {
         name: "rank",
         aliases: ["rank", "xp", "level"],
-        usage: "duc rank\nduc rank [member]",
+        usage: ["rank","rank [member]"],
         description: "Check your level on any server",
         category: "levels",
         noalias: "",
@@ -85,7 +86,7 @@ module.exports = {
                     canvas.addText(`Level: ${curlvl}`, 150, 129)
                     // Add the users XP
                     canvas.setTextAlign('center')
-                    canvas.addText(`XP: ${curxp}/${nxtlvlXP}`, 350, 129)
+                    canvas.addText(`XP: ${correctXp(curxp, 2)}/${correctXp(nxtlvlXP, 2)}`, 350, 129)
                     // Add the users rank
                     canvas.setColor('#ffffff')
                     canvas.setTextAlign('right')
@@ -93,14 +94,15 @@ module.exports = {
                     canvas.closePath()
                     // Create the level bar
                     canvas.setColor('#ffffff')
-                    canvas.addBeveledRect(20, 150, 646, 37, 17).fill()
+                    canvas.addBeveledRect(20, 150, 646, 36.5, 32).fill()
                     canvas.save()
                     // Add the moving status bar
-                    if (curxp < 1) {
-                        return;
-                    } else if (curxp > 1) {
-                        canvas.setColor('#2da14e')
-                        canvas.addBeveledRect(20, 150, ((65/ (nxtlvlXP)) * curxp) * 6.46, 37, 17).fill()
+                    if (curxp < curlvl * 10) {
+                        canvas.setColor('#f7df63')
+                        canvas.addCircle(38.5, 168, 18).fill()
+                    } else {
+                        canvas.setColor('#f7df63')
+                        canvas.addBeveledRect(20, 150, ((65/ (nxtlvlXP)) * curxp) * 6.46, 36.5, 33).fill()
                     }
                     // Add the users profile picture and presence
                     canvas.addCircularImage(avatar, 75, 75, 62)

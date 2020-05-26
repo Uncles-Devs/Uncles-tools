@@ -7,8 +7,8 @@ module.exports = {
     config: {
         name: "help",
         aliases: ["helpme", "commands", "cmds", "help"],
-        usage: "duc help\nduc help levels\nduc help rank",
-        description: "",
+        usage: ["help","help levels","help rank"],
+        description: "Shows help about the bot, a command, or a category",
         category:"general",
         noalias: "",
         accessibility: ""
@@ -42,12 +42,19 @@ module.exports = {
                 if (command) {
                 command = command.config
     
+                const usage = command.usage.map(usage => `hh${usage}`).join('\n')
+                let Aliases;
+                if (command.aliases.length === 1) {
+                    Aliases = ['`No aliases`']
+                } else if (command.aliases.length > 1) {
+                    Aliases = command.aliases.join('`, `')
+                }
                 const embed = new MessageEmbed()
                 .setColor('#f7df63')
                 .setTitle(`**duc ${command.name.slice(0, 1).toLowerCase() + command.name.slice(1)} info**`)
                 .setDescription(`${command.description}`)
-                .addField('Usage' , `\`\`\`${command.usage}\`\`\``)
-                .addField('Aliases', `\`${command.aliases ? command.aliases.join('`, `') : `No aliases`}\``)
+                .addField('Usage' , `\`\`\`${usage}\`\`\``)
+                .addField('Aliases', `\`${Aliases}\``)
     
                  message.channel.send(embed)
                 } 

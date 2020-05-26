@@ -3,8 +3,8 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
     config: {
         name: "invite",
-        aliases: ["invite", "inv"],
-        usage: "invite",
+        aliases: ["invite"],
+        usage: ["invite"],
         description: "Obtain and invite link for Ducky",
         category:"general",
         noalias: "",

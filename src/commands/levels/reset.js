@@ -1,5 +1,5 @@
-const levels = require('../../database/models/xp.js');
-const levelRoles = require('../../database/models/levelRoles.js');
+const levels = require('../../database/models/leveling.js');
+const levelRoles = require('../../database/models/rewards.js');
 
 module.exports = {
     config: {

@@ -39,7 +39,7 @@ module.exports = {
                 const leadOut = leadOutp.join('\n')
 
                 const embed = new MessageEmbed()
-                .setColor('GREEN')
+                .setColor('#f7df63')
                 .setThumbnail(`${message.guild.iconURL()}`)
                 .setTitle(`${message.guild.name}'s Experience Leaderboard`)
                 .setDescription(`${leadOut}`, true)

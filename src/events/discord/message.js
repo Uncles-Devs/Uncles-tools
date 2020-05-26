@@ -2,16 +2,16 @@ const { prefix} = require("../../botconfig.json");
 const { MessageEmbed } = require('discord.js');
 const rateLimitXP = new Set()
 
-
-
 module.exports = async (bot, message) => {
-    console.log('testing')
+   if (message.author.bot) {
+       console.log('bot')
+   }
 // --------------------------- L E V E L I N G --------------------------- \\
     // Database stuff
-    const xpData = require('../../database/models/xp.js');
+    const xpData = require('../../database/models/leveling.js');
 
     // Random xp to add
-    let xpAmount = Math.floor(Math.random() * 55) + 10;
+    let xpAmount = Math.floor(Math.random() * 1) + 7;
 
     // Find user in database
     let data = await xpData.findOne({
@@ -52,7 +52,7 @@ module.exports = async (bot, message) => {
     if (!message.author.bot && data) {
     // If user needs to level up
     const curlvl = data.level
-    let nxtLvl = data.level * 65 // how much xp person needs to level up EX. lvl 1 - 250 xp, lvl 2 - 2 times 250xp
+    let nxtLvl = data.level * 78 // how much xp person needs to level up EX. lvl 1 - 250 xp, lvl 2 - 2 times 250xp
     if (nxtLvl <= data.xp) {
         data.level = curlvl + 1
         data.xp = 0
