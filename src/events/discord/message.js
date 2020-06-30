@@ -57,7 +57,7 @@ module.exports = async (bot, message) => {
         data.level = curlvl + 1
         data.xp = 0
         await data.save().catch(err => console.log(err))
-        const lr = require('../../database/models/levelRoles.js')
+        const lr = require('../../database/models/rewards.js')
         let roleFinder = await lr.find({
             serverId: message.guild.id,
             level: data.level

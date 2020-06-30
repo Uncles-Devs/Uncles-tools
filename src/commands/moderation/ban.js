@@ -4,7 +4,7 @@ module.exports = {
         aliases: ["ban"],
         usage: ["ban (member) [time] [reason]", "ban (member) [reason]","ban (member)"],
         description: "",
-        category:"",
+        category:"moderation",
         noalias: "",
         accessibility: ""
     },
